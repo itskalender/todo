@@ -1,0 +1,28 @@
+.ToDoListCard {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  margin-right: 1rem;
+  padding: 1.3rem;
+  text-align: center;
+  border: 2px solid black;
+  overflow: auto;
+}
+
+.DeleteIcon {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  cursor: pointer;
+}
+
+.ToDoListCard > input {
+  width: 100%;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.ToDoListCard button {
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}

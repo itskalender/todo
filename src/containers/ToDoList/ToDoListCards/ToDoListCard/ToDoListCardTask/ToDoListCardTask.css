@@ -1,0 +1,10 @@
+.Task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.Task input {
+  margin: 0;
+}

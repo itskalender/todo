@@ -1,0 +1,8 @@
+.ToDoListCards {
+  width: 80%;
+  height: 100%;
+  padding: 1rem;
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}

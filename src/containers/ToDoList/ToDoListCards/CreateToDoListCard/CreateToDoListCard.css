@@ -1,0 +1,10 @@
+.CreateCard {
+  width: 200px;
+  height: 300px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  text-align: center;
+}
