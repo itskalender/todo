@@ -75,3 +75,11 @@ export const taskDeleted = (taskIndex, cardId) => {
     cardId: cardId,
   };
 };
+
+export const taskCheckboxChanged = (cardId, taskId) => {
+  return {
+    type: actionTypes.TASK_CHECKBOX_CHANGED,
+    cardId: cardId,
+    taskId: taskId,
+  };
+};

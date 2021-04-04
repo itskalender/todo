@@ -24,22 +24,38 @@ class Auth extends Component {
   };
 
   render() {
+    const isAuthDataValid =
+      this.state.firstName.trim().length > 0 &&
+      this.state.lastName.trim().length > 0;
+
     return (
       <div className={classes.Auth}>
-        <form className={classes.Form} onSubmit={this.onSubmitHandler}>
+        <form
+          className={classes.Form}
+          onSubmit={
+            isAuthDataValid ? this.onSubmitHandler : e => e.preventDefault()
+          }
+        >
           <input
-            onChange={e => this.firstNameChangedHandler(e)}
+            onChange={this.firstNameChangedHandler}
             className={classes.Input}
             type="text"
             placeholder="Name"
           ></input>
           <input
-            onChange={e => this.lastNameChangedHandler(e)}
+            onChange={this.lastNameChangedHandler}
             className={classes.Input}
             type="text"
             placeholder="Surname"
           ></input>
-          <button className={classes.ButtonAuth}>LOGIN</button>
+          <button
+            className={[
+              classes.ButtonAuth,
+              isAuthDataValid ? classes.EnabledButton : null,
+            ].join(' ')}
+          >
+            LOGIN
+          </button>
         </form>
       </div>
     );

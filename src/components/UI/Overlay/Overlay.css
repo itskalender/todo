@@ -16,5 +16,21 @@
 }
 
 .Overlay:hover {
-  opacity: 0.6;
+  opacity: 0.8;
+}
+
+.Overlay > button {
+  font-family: 'VT323', monospace;
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.Overlay > button:hover {
+  border: 2px solid #20c997;
 }

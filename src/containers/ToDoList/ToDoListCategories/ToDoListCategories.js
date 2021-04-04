@@ -25,8 +25,7 @@ class ToDoListCategories extends Component {
 
     return (
       <div className={classes.Categories}>
-        <p>Categories</p>
-        <hr />
+        <p className={classes.Title}>Categories</p>
         {categoriesComponents}
       </div>
     );

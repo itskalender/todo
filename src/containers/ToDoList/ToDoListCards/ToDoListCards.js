@@ -21,6 +21,7 @@ class ToDoListCards extends Component {
             category={card.category}
             isCategorySaved={card.isCategorySaved}
             isSaved={card.isSaved}
+            checkedTasks={this.props.checkedTasks}
             taskAdded={this.props.onTaskAdded}
             taskDeleted={this.props.onTaskDeleted}
             cardDeleted={this.props.onCardDeleted}
@@ -43,6 +44,7 @@ class ToDoListCards extends Component {
 const mapStateToProps = state => {
   return {
     toDoCards: state.toDoCards,
+    checkedTasks: state.checkedTasks,
   };
 };
 

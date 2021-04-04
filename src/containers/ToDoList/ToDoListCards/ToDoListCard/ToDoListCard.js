@@ -20,11 +20,6 @@ class toDoListCard extends Component {
     this.setState({ task: newTask });
   };
 
-  titleChangedHandler = e => {
-    const newTitle = e.target.value;
-    this.setState({ title: newTitle });
-  };
-
   render() {
     let toDoListCardTask = null;
     if (this.props.tasks) {
@@ -32,10 +27,13 @@ class toDoListCard extends Component {
         return (
           <ToDoListCardTask
             key={index}
+            taskId={index}
             cardId={this.props.id}
-            index={index}
             task={task}
+            checkedTasks={this.props.checkedTasks}
             taskDeleted={this.props.taskDeleted}
+            taskCheckboxChanged={this.props.onTaskCheckboxChanged} // NOTE :
+            // index={index}
           />
         );
       });
@@ -155,6 +153,8 @@ const mapDispatchToProps = dispatch => {
     onCardDeleted: cardId => dispatch(actions.cardDeleted(cardId)),
     onTitleChanged: (title, cardId) =>
       dispatch(actions.titleChanged(title, cardId)),
+    onTaskCheckboxChanged: (cardId, taskId) =>
+      dispatch(actions.taskCheckboxChanged(cardId, taskId)),
   };
 };
 

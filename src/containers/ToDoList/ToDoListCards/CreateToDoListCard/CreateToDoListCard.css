@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.CreateCard > p {
+  background-color: #000;
+  color: #fff;
+  padding: 0.2rem 0;
+}
 .CreateCard > button {
   outline: none;
   border: none;
@@ -23,6 +28,6 @@
 
 .CreateCard > button:hover {
   transform: translateY(-3px);
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 2px 2px 2px black;
   cursor: pointer;
 }

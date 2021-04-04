@@ -8,5 +8,6 @@ export {
   categoryChanged,
   taskAdded,
   taskDeleted,
+  taskCheckboxChanged,
 } from './toDoListCards';
 export { checkboxChanged } from './toDoListCategories';

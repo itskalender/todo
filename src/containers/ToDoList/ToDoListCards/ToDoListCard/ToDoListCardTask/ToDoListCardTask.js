@@ -8,12 +8,25 @@ import classes from './ToDoListCardTask.css';
 const toDoListCardTask = props => {
   return (
     <div className={classes.Task}>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        value={props.taskId}
+        // NOTE : YARIN BAK
+        // checked={
+        //   props.checkedTasks.some(checkedTask => {
+        //     checkedTask.cardId === props.cardId &&
+        //       checkedTask.taskId === props.taskId;
+        //   })
+        //     ? true
+        //     : null
+        // }
+        onChange={() => props.taskCheckboxChanged(props.cardId, props.taskId)}
+      />
       <p>{props.task}</p>
       <FontAwesomeIcon
         className={classes.Delete}
         icon={faTrash}
-        onClick={() => props.taskDeleted(props.index, props.cardId)}
+        onClick={() => props.taskDeleted(props.taskId, props.cardId)}
       />
     </div>
   );

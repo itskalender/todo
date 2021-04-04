@@ -33,18 +33,23 @@
   width: 95%;
   padding: 0.5rem 2rem;
   border: none;
-  cursor: pointer;
-  background-color: #20c997;
+  background-color: #ccc;
   letter-spacing: 1.3px;
   color: white;
   font-weight: 700;
   transition: transform 250ms, box-shadow 250ms;
   outline: none;
+  cursor: not-allowed;
 }
 
-.ButtonAuth:hover {
+.EnabledButton {
+  background-color: #20c997;
+}
+
+.EnabledButton:hover {
   transform: translateY(-3px);
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 2px 2px 2px black;
+  cursor: pointer;
 }
 
 @media (min-width: 500px) {

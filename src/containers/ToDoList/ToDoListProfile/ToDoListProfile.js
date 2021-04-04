@@ -26,8 +26,10 @@ class ToDoListProfile extends Component {
         <div className={classes.Logo}>
           <FontAwesomeIcon icon={faUser} size="2x" />
         </div>
-        <p>
-          {this.state.firstName} <br /> {this.state.lastName}
+        <p className={classes.FullName}>
+          <span>{this.state.firstName}</span>
+          <br />
+          <span>{this.state.lastName}</span>
         </p>
       </div>
     );

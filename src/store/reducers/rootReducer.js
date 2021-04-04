@@ -4,6 +4,7 @@ const initialState = {
   categoryDatas: [],
   toDoCards: [],
   copiedToDoCards: [],
+  checkedTasks: [],
   isChecked: false,
 };
 
@@ -145,7 +146,17 @@ const reducer = (state = initialState, action) => {
         toDoCards: updatedToDoCards,
       };
 
-    case actionTypes.CHECKBOX_CHANGED:
+    case actionTypes.TASK_CHECKBOX_CHANGED: {
+      const updatedCheckedTasks = [...state.checkedTasks];
+      const data = { cardId: action.cardId, taskId: action.taskId };
+      updatedCheckedTasks.push(data);
+      return {
+        ...state,
+        checkedTasks: updatedCheckedTasks,
+      };
+    }
+
+    case actionTypes.CHECKBOX_CHANGED: // for category
       const newChecked = !state.isChecked;
       if (newChecked) {
         const copiedToDoCards = [...state.toDoCards];

@@ -87,7 +87,7 @@
 
 .ToDoListCard > button:hover {
   transform: translateY(-3px);
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 2px 2px 2px black;
 }
 
 .Hidden {
