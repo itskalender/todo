@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './ToDoListCard.css';
+
 import ToDoListCardTask from './ToDoListCardTask/ToDoListCardTask';
+import Overlay from '../../../../components/UI/Overlay/Overlay';
 import * as actions from '../../../../store/actions/index';
-import Overlay from '../../../../components/Overlay/Overlay';
 
 class toDoListCard extends Component {
   state = {
@@ -17,6 +18,11 @@ class toDoListCard extends Component {
   taskChangedHandler = e => {
     const newTask = e.target.value;
     this.setState({ task: newTask });
+  };
+
+  titleChangedHandler = e => {
+    const newTitle = e.target.value;
+    this.setState({ title: newTitle });
   };
 
   render() {
@@ -51,18 +57,31 @@ class toDoListCard extends Component {
 
     return (
       <div className={classes.ToDoListCard}>
-        <div
+        {/* <div
           className={[
             classes.DeleteIcon,
             this.props.isSaved ? classes.Hidden : '',
           ].join(' ')}
-        >
-          <FontAwesomeIcon
-            icon={faTimes}
-            onClick={() => this.props.cardDeleted(this.props.id)}
-          />
-        </div>
-        <input type="text" placeholder="Card Title"></input>
+        > */}
+        <FontAwesomeIcon
+          className={[
+            classes.DeleteIcon,
+            this.props.isSaved ? classes.Hidden : '',
+          ].join(' ')}
+          icon={faTimes}
+          onClick={() => this.props.cardDeleted(this.props.id)}
+        />
+        {/* </div> */}
+
+        <input
+          type="text"
+          placeholder="Card Title"
+          value={this.props.title}
+          onChange={e =>
+            this.props.onTitleChanged(e.target.value, this.props.id)
+          }
+        />
+
         <div className={classes.Category}>
           <input
             type="text"
@@ -73,31 +92,55 @@ class toDoListCard extends Component {
             }
           />
           <FontAwesomeIcon
-            className={classes.AddIcon}
-            icon={faPlus}
+            className={[
+              classes.AddCategoryIcon,
+              this.props.category.trim().length === 0 ||
+              this.props.isCategorySaved
+                ? classes.Disabled
+                : '',
+            ].join(' ')}
+            icon={this.props.isCategorySaved ? faCheck : faPlus}
             size="1x"
-            onClick={() => this.props.categoryAdded(this.props.id)}
+            onClick={() => {
+              if (this.props.category.length === 0) return;
+              this.props.categoryAdded(this.props.id);
+            }}
           />
         </div>
-        <div className={this.props.isSaved ? classes.Hidden : ''}>
+
+        <div className={this.props.isSaved ? classes.Hidden : classes.AddTask}>
           <input
             type="text"
             placeholder="New Task"
+            value={this.state.task}
             onChange={this.taskChangedHandler}
           ></input>
-          <button
+          <FontAwesomeIcon
+            className={[
+              classes.AddTaskIcon,
+              this.state.task.trim().length > 0 ? '' : classes.Disabled,
+            ].join(' ')}
+            icon={faPlus}
+            size="1x"
+            onClick={e => {
+              if (this.state.task.trim().length === 0) return;
+              this.props.taskAdded(this.state.task, this.props.id);
+              this.setState({ task: '' });
+            }}
+          />
+          {/* <button
             onClick={() => this.props.taskAdded(this.state.task, this.props.id)}
           >
             Add Task
-          </button>
+          </button> */}
         </div>
-        <hr />
+
         <div>{toDoListCardTask}</div>
         <button
           className={this.props.isSaved ? classes.Hidden : ''}
           onClick={() => this.props.onCardSaved(this.props.id)}
         >
-          Save Card
+          SAVE
         </button>
         {overlay}
       </div>
@@ -110,6 +153,8 @@ const mapDispatchToProps = dispatch => {
     onCardSaved: cardId => dispatch(actions.cardSaved(cardId)),
     onCardEditted: cardId => dispatch(actions.cardEditted(cardId)),
     onCardDeleted: cardId => dispatch(actions.cardDeleted(cardId)),
+    onTitleChanged: (title, cardId) =>
+      dispatch(actions.titleChanged(title, cardId)),
   };
 };
 

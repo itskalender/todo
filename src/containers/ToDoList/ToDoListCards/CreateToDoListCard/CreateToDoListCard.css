@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .CreateCard {
   width: 200px;
   height: 300px;
@@ -7,4 +9,20 @@
   justify-content: space-between;
   padding: 1rem;
   text-align: center;
+}
+
+.CreateCard > button {
+  outline: none;
+  border: none;
+  padding: 1rem 0;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  letter-spacing: 1.2px;
+  transition: transform 300ms, box-shadow 300ms;
+}
+
+.CreateCard > button:hover {
+  transform: translateY(-3px);
+  box-shadow: 1px 1px 1px black;
+  cursor: pointer;
 }

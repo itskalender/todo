@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import classes from './ToDoListProfile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+
+import classes from './ToDoListProfile.css';
 
 class ToDoListProfile extends Component {
   state = {

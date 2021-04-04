@@ -9,11 +9,13 @@ class ToDoList extends Component {
   render() {
     return (
       <div className={classes.ToDoList}>
-        <div style={{ width: '20%', height: '100%' }}>
+        <div style={{ width: '20%', height: '100%', padding: '1rem' }}>
           <ToDoListProfile />
           <ToDoListCategories />
         </div>
-        <ToDoListCards />
+        <div style={{ width: '80%', height: '100%', padding: '1rem 0' }}>
+          <ToDoListCards />
+        </div>
       </div>
     );
   }

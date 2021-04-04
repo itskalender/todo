@@ -8,22 +8,20 @@
 }
 
 .Form {
-  width: 35%;
+  width: 70%;
   height: 200px;
   padding: 1rem;
-  /* border: 2px black solid; */
-  border-radius: 1rem;
+  border: 2px black solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 8px 2px rgba(134, 134, 134, 0.5);
 }
 
 .Input {
   padding: 0.4rem;
   margin-bottom: 1rem;
-  width: 100%;
+  width: 95%;
   text-align: center;
 }
 
@@ -32,10 +30,25 @@
 }
 
 .ButtonAuth {
+  width: 95%;
   padding: 0.5rem 2rem;
-  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: #20c997;
+  letter-spacing: 1.3px;
+  color: white;
+  font-weight: 700;
+  transition: transform 250ms, box-shadow 250ms;
+  outline: none;
 }
 
 .ButtonAuth:hover {
-  background-color: #b9ffa4;
+  transform: translateY(-3px);
+  box-shadow: 1px 1px 1px black;
+}
+
+@media (min-width: 500px) {
+  .Form {
+    width: 350px;
+  }
 }

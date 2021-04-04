@@ -15,10 +15,14 @@
   right: 0.3rem;
   cursor: pointer;
 }
+.DeleteIcon:hover {
+  color: #dc3545;
+}
 
 .ToDoListCard > input {
   width: 100%;
   margin-bottom: 0.4rem;
+  padding: 1px 0;
   text-align: center;
 }
 
@@ -28,24 +32,70 @@
   margin-bottom: 0.4rem;
   display: flex;
 }
+
 .Category > input {
   width: 100%;
+  padding: 1px 0;
   text-align: center;
 }
 
-.AddIcon {
+.AddCategoryIcon {
   position: absolute;
   right: 0;
   top: 2px;
-  right: 2px;
+  right: 5px;
   cursor: pointer;
 }
 
-.ToDoListCard button {
-  margin-bottom: 0.4rem;
+.AddCategoryIcon:hover {
+  color: #28a745;
+}
+
+.AddTask {
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.AddTask > input {
+  width: 100%;
+  padding: 1px 0;
+  text-align: center;
+}
+
+.AddTaskIcon {
+  position: absolute;
+  top: 4px;
+  right: 5px;
   cursor: pointer;
+}
+.AddTaskIcon:hover {
+  color: #28a745;
+}
+
+.ToDoListCard > button {
+  cursor: pointer;
+  margin-top: 0.4rem;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.3rem 0;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  transition: transform 300ms, box-shadow 300ms;
+}
+
+.ToDoListCard > button:hover {
+  transform: translateY(-3px);
+  box-shadow: 1px 1px 1px black;
 }
 
 .Hidden {
   display: none;
+}
+
+.Disabled,
+.Disabled:hover {
+  cursor: not-allowed;
+  color: #ccc;
 }

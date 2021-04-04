@@ -20,7 +20,7 @@ class Auth extends Component {
     e.preventDefault();
     localStorage.setItem('firstName', this.state.firstName);
     localStorage.setItem('lastName', this.state.lastName);
-    this.props.history.push('/todolist'); // NOTE
+    this.props.history.push('/todolist');
   };
 
   render() {
@@ -39,9 +39,7 @@ class Auth extends Component {
             type="text"
             placeholder="Surname"
           ></input>
-          <button className={classes.ButtonAuth} to="/todolist">
-            Login
-          </button>
+          <button className={classes.ButtonAuth}>LOGIN</button>
         </form>
       </div>
     );

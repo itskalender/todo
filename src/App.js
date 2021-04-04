@@ -8,13 +8,11 @@ import ToDoList from './containers/ToDoList/ToDoList';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Switch>
-          <Route path="/" exact component={Auth} />
-          <Route path="/todolist" component={ToDoList} />
-          <Redirect to="/" />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" exact component={Auth} />
+        <Route path="/todolist" component={ToDoList} />
+        <Redirect to="/" />
+      </Switch>
     );
   }
 }

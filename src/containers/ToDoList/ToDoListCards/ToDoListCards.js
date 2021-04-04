@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './ToDoListCards.css';
+
 import CreateToDoListCard from './CreateToDoListCard/CreateToDoListCard';
 import ToDoListCard from './ToDoListCard/ToDoListCard';
 import * as actions from '../../../store/actions/index';
@@ -18,6 +19,7 @@ class ToDoListCards extends Component {
             title={card.title}
             tasks={card.tasks}
             category={card.category}
+            isCategorySaved={card.isCategorySaved}
             isSaved={card.isSaved}
             taskAdded={this.props.onTaskAdded}
             taskDeleted={this.props.onTaskDeleted}

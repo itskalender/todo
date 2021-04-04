@@ -3,6 +3,7 @@ export {
   cardSaved,
   cardEditted,
   cardDeleted,
+  titleChanged,
   categoryAdded,
   categoryChanged,
   taskAdded,

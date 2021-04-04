@@ -8,6 +8,7 @@ export const cardCreated = () => {
     id: id,
     category: '',
     isSaved: false,
+    isCategorySaved: false,
   };
   return {
     type: actionTypes.CARD_CREATED,
@@ -32,6 +33,14 @@ export const cardEditted = cardId => {
 export const cardDeleted = cardId => {
   return {
     type: actionTypes.CARD_DELETED,
+    cardId: cardId,
+  };
+};
+
+export const titleChanged = (title, cardId) => {
+  return {
+    type: actionTypes.TITLE_CHANGED,
+    title: title,
     cardId: cardId,
   };
 };

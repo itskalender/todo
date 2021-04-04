@@ -50,6 +50,27 @@ const reducer = (state = initialState, action) => {
         card => card.id === action.cardId
       );
       updatedToDoCards.splice(cardIndex, 1);
+      //
+      const updatedCategoryDatas = [...state.categoryDatas];
+      const categoryDataIndex = updatedCategoryDatas.findIndex(
+        categData => categData.id === action.cardId
+      );
+      updatedCategoryDatas.splice(categoryDataIndex, 1);
+      return {
+        ...state,
+        toDoCards: updatedToDoCards,
+        categoryDatas: updatedCategoryDatas,
+      };
+    }
+
+    case actionTypes.TITLE_CHANGED: {
+      const updatedToDoCards = [...state.toDoCards];
+      const cardIndex = updatedToDoCards.findIndex(
+        card => card.id === action.cardId
+      );
+      const updatedCard = { ...updatedToDoCards[cardIndex] };
+      updatedCard.title = action.title;
+      updatedToDoCards[cardIndex] = updatedCard;
       return {
         ...state,
         toDoCards: updatedToDoCards,
@@ -63,9 +84,19 @@ const reducer = (state = initialState, action) => {
         categData => categData.cardId === categoryData.cardId
       );
       if (hasSameCardId) return state;
+      //
+      const updatedToDoCards = [...state.toDoCards];
+      const cardIndex = updatedToDoCards.findIndex(
+        card => card.id === action.cardId
+      );
+      const updatedCard = { ...updatedToDoCards[cardIndex] };
+      updatedCard.isCategorySaved = true;
+      updatedToDoCards[cardIndex] = updatedCard;
+
       return {
         ...state,
         categoryDatas: state.categoryDatas.concat(categoryData),
+        toDoCards: updatedToDoCards,
       };
     }
 
@@ -77,7 +108,6 @@ const reducer = (state = initialState, action) => {
       const updatedCard = { ...updatedToDoCards[cardIndex] };
       updatedCard.category = action.category;
       updatedToDoCards[cardIndex] = updatedCard;
-      ///
       return {
         ...state,
         toDoCards: updatedToDoCards,
@@ -92,7 +122,6 @@ const reducer = (state = initialState, action) => {
       const updatedCard = { ...updatedToDoCards[cardIndex] };
       const updatedTasks = [...updatedCard.tasks];
       updatedTasks.push(action.taskName);
-      ///
       updatedCard.tasks = updatedTasks;
       updatedToDoCards[cardIndex] = updatedCard;
       return {
@@ -109,7 +138,6 @@ const reducer = (state = initialState, action) => {
       const updatedCard = { ...updatedToDoCards[cardIndex] };
       const updatedTasks = [...updatedCard.tasks];
       updatedTasks.splice(action.taskIndex, 1);
-      ///
       updatedCard.tasks = updatedTasks;
       updatedToDoCards[cardIndex] = updatedCard;
       return {
@@ -125,7 +153,6 @@ const reducer = (state = initialState, action) => {
         const correspondingCards = state.toDoCards.filter(
           card => card.category === action.category
         );
-        console.log('correspondingCards', correspondingCards);
 
         return {
           ...state,
