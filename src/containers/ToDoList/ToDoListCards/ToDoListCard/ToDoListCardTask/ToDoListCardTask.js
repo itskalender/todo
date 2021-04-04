@@ -11,6 +11,7 @@ const toDoListCardTask = props => {
       <input type="checkbox" />
       <p>{props.task}</p>
       <FontAwesomeIcon
+        className={classes.Delete}
         icon={faTrash}
         onClick={() => props.taskDeleted(props.index, props.cardId)}
       />

@@ -8,3 +8,7 @@
 .Task input {
   margin: 0;
 }
+
+.Delete {
+  cursor: pointer;
+}

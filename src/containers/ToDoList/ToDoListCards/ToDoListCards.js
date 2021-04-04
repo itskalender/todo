@@ -1,79 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './ToDoListCards.css';
 import CreateToDoListCard from './CreateToDoListCard/CreateToDoListCard';
 import ToDoListCard from './ToDoListCard/ToDoListCard';
+import * as actions from '../../../store/actions/index';
 
 class ToDoListCards extends Component {
-  state = {
-    toDoItems: [],
-  };
-
-  // Create Card
-  cardCreatedHandler = () => {
-    const id = new Date().getTime();
-    const updatedToDoItems = this.state.toDoItems.concat({
-      title: '',
-      tasks: [],
-      id: id,
-    });
-    this.setState({
-      toDoItems: updatedToDoItems,
-    });
-  };
-
-  cardDeletedHandler = cardId => {
-    const updatedToDoItems = [...this.state.toDoItems];
-    const cardIndex = updatedToDoItems.findIndex(card => card.id === cardId);
-    updatedToDoItems.splice(cardIndex, 1);
-    this.setState({
-      toDoItems: updatedToDoItems,
-    });
-  };
-
-  taskAddedHandler = (taskName, cardId) => {
-    const updatedToDoItems = [...this.state.toDoItems];
-    const cardIndex = updatedToDoItems.findIndex(card => card.id === cardId);
-    const updatedCard = { ...updatedToDoItems[cardIndex] };
-    const updatedTasks = [...updatedCard.tasks];
-    updatedTasks.push(taskName);
-    ///
-    updatedCard.tasks = updatedTasks;
-    updatedToDoItems[cardIndex] = updatedCard;
-
-    this.setState({
-      toDoItems: updatedToDoItems,
-    });
-  };
-
-  taskDeletedHandler = (taskIndex, cardId) => {
-    const updatedToDoItems = [...this.state.toDoItems];
-    const cardIndex = updatedToDoItems.findIndex(card => card.id === cardId);
-    const updatedCard = { ...updatedToDoItems[cardIndex] };
-    const updatedTasks = [...updatedCard.tasks];
-    updatedTasks.splice(taskIndex, 1);
-    ///
-    updatedCard.tasks = updatedTasks;
-    updatedToDoItems[cardIndex] = updatedCard;
-    this.setState({
-      toDoItems: updatedToDoItems,
-    });
-  };
-
   render() {
-    console.log(this.state);
     let toDoListCard = null;
-    if (this.state.toDoItems.length > 0) {
-      toDoListCard = this.state.toDoItems.map((card, index) => {
+    if (this.props.toDoCards.length > 0) {
+      toDoListCard = this.props.toDoCards.map((card, index) => {
         return (
           <ToDoListCard
             key={index}
             id={card.id}
             title={card.title}
             tasks={card.tasks}
-            taskAdded={this.taskAddedHandler}
-            taskDeleted={this.taskDeletedHandler}
-            cardDeleted={this.cardDeletedHandler}
+            category={card.category}
+            isSaved={card.isSaved}
+            taskAdded={this.props.onTaskAdded}
+            taskDeleted={this.props.onTaskDeleted}
+            cardDeleted={this.props.onCardDeleted}
+            categoryChanged={this.props.onCategoryChanged}
+            categoryAdded={this.props.onCategoryAdded}
           />
         );
       });
@@ -82,10 +32,32 @@ class ToDoListCards extends Component {
     return (
       <div className={classes.ToDoListCards}>
         {toDoListCard}
-        <CreateToDoListCard cardCreatedHandler={this.cardCreatedHandler} />
+        <CreateToDoListCard cardCreated={this.props.onCardAdded} />
       </div>
     );
   }
 }
 
-export default ToDoListCards;
+const mapStateToProps = state => {
+  return {
+    toDoCards: state.toDoCards,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCardAdded: () => dispatch(actions.cardCreated()),
+    onCardDeleted: cardId => dispatch(actions.cardDeleted(cardId)),
+
+    onCategoryAdded: cardId => dispatch(actions.categoryAdded(cardId)),
+    onCategoryChanged: (category, cardId) =>
+      dispatch(actions.categoryChanged(category, cardId)),
+
+    onTaskAdded: (taskIndex, cardId) =>
+      dispatch(actions.taskAdded(taskIndex, cardId)),
+    onTaskDeleted: (taskIndex, cardId) =>
+      dispatch(actions.taskDeleted(taskIndex, cardId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoListCards);

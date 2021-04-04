@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classes from './ToDoList.css';
 import ToDoListProfile from './ToDoListProfile/ToDoListProfile';
 import ToDoListCards from './ToDoListCards/ToDoListCards';
+import ToDoListCategories from './ToDoListCategories/ToDoListCategories';
 
 class ToDoList extends Component {
   render() {
@@ -10,16 +11,7 @@ class ToDoList extends Component {
       <div className={classes.ToDoList}>
         <div style={{ width: '20%', height: '100%' }}>
           <ToDoListProfile />
-          <div
-            style={{
-              width: '100%',
-              height: '80%',
-              textAlign: 'center',
-              padding: '1rem',
-            }}
-          >
-            CHECKBOX
-          </div>
+          <ToDoListCategories />
         </div>
         <ToDoListCards />
       </div>

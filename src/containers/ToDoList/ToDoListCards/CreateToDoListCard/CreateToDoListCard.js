@@ -6,7 +6,7 @@ const CreateToDoListCard = props => {
   return (
     <div className={classes.CreateCard}>
       <p>NEW PROJECT</p>
-      <button onClick={props.cardCreatedHandler}>CREATE</button>
+      <button onClick={props.cardCreated}>CREATE</button>
     </div>
   );
 };

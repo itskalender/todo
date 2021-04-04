@@ -22,7 +22,30 @@
   text-align: center;
 }
 
+.Category {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.4rem;
+  display: flex;
+}
+.Category > input {
+  width: 100%;
+  text-align: center;
+}
+
+.AddIcon {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  right: 2px;
+  cursor: pointer;
+}
+
 .ToDoListCard button {
   margin-bottom: 0.4rem;
   cursor: pointer;
+}
+
+.Hidden {
+  display: none;
 }

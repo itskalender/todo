@@ -1,0 +1,6 @@
+.Category {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+}
