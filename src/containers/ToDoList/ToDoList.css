@@ -1,12 +1,13 @@
 .ToDoList {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   background-color: #fbfbfb;
 }
 
 .ColumnFirst {
   width: 20%;
+  min-width: 12rem;
   height: 100%;
   padding: 1rem;
 }
