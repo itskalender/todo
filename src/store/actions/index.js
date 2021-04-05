@@ -11,3 +11,4 @@ export {
   taskCheckboxChanged,
 } from './toDoListCards';
 export { checkboxChanged } from './toDoListCategories';
+export { logout } from './auth';

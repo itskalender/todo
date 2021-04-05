@@ -37,7 +37,7 @@
   letter-spacing: 1.3px;
   color: white;
   font-weight: 700;
-  transition: transform 250ms, box-shadow 250ms;
+  transition: background-color 1000ms, transform 250ms, box-shadow 250ms;
   outline: none;
   cursor: not-allowed;
 }

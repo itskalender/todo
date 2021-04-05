@@ -6,10 +6,6 @@
   margin-bottom: 0.5rem;
 }
 
-.Category > input:checked {
-  background-color: #20c997;
-}
-
 .Category > p {
   font-family: sans-serif;
   font-size: 0.9rem;

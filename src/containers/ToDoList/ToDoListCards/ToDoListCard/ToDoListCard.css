@@ -6,7 +6,6 @@
   padding: 1.3rem;
   text-align: center;
   border: 2px solid black;
-  overflow: auto;
 }
 
 .DeleteIcon {
@@ -71,6 +70,11 @@
 }
 .AddTaskIcon:hover {
   color: #28a745;
+}
+
+.Tasks {
+  height: 7.8rem;
+  overflow: auto;
 }
 
 .ToDoListCard > button {

@@ -33,7 +33,6 @@ class toDoListCard extends Component {
             checkedTasks={this.props.checkedTasks}
             taskDeleted={this.props.taskDeleted}
             taskCheckboxChanged={this.props.onTaskCheckboxChanged} // NOTE :
-            // index={index}
           />
         );
       });
@@ -55,12 +54,6 @@ class toDoListCard extends Component {
 
     return (
       <div className={classes.ToDoListCard}>
-        {/* <div
-          className={[
-            classes.DeleteIcon,
-            this.props.isSaved ? classes.Hidden : '',
-          ].join(' ')}
-        > */}
         <FontAwesomeIcon
           className={[
             classes.DeleteIcon,
@@ -69,8 +62,6 @@ class toDoListCard extends Component {
           icon={faTimes}
           onClick={() => this.props.cardDeleted(this.props.id)}
         />
-        {/* </div> */}
-
         <input
           type="text"
           placeholder="Card Title"
@@ -79,7 +70,6 @@ class toDoListCard extends Component {
             this.props.onTitleChanged(e.target.value, this.props.id)
           }
         />
-
         <div className={classes.Category}>
           <input
             type="text"
@@ -105,7 +95,6 @@ class toDoListCard extends Component {
             }}
           />
         </div>
-
         <div className={this.props.isSaved ? classes.Hidden : classes.AddTask}>
           <input
             type="text"
@@ -126,14 +115,9 @@ class toDoListCard extends Component {
               this.setState({ task: '' });
             }}
           />
-          {/* <button
-            onClick={() => this.props.taskAdded(this.state.task, this.props.id)}
-          >
-            Add Task
-          </button> */}
         </div>
 
-        <div>{toDoListCardTask}</div>
+        <div className={classes.Tasks}>{toDoListCardTask}</div>
         <button
           className={this.props.isSaved ? classes.Hidden : ''}
           onClick={() => this.props.onCardSaved(this.props.id)}

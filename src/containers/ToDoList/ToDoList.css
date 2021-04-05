@@ -4,3 +4,15 @@
   display: flex;
   background-color: #fbfbfb;
 }
+
+.ColumnFirst {
+  width: 20%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.ColumnSecond {
+  width: 80%;
+  height: 100%;
+  padding: 1rem 0;
+}

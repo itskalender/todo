@@ -8,6 +8,11 @@ class Auth extends Component {
     lastName: '',
   };
 
+  componentDidMount() {
+    localStorage.removeItem('firstName');
+    localStorage.removeItem('lastName');
+  }
+
   firstNameChangedHandler = e => {
     this.setState({ firstName: e.target.value });
   };

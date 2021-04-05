@@ -13,3 +13,5 @@ export const TASK_DELETED = 'TASK_DELETED';
 
 export const CHECKBOX_CHANGED = 'CHECKBOX_CHANGED'; //category
 export const TASK_CHECKBOX_CHANGED = 'TASK_CHECKBOX_CHANGED';
+
+export const LOG_OUT = 'LOG_OUT';

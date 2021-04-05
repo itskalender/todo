@@ -5,10 +5,19 @@
   margin-bottom: 0.3rem;
 }
 
-.Task input {
+.Task > input {
   margin: 0;
+}
+
+.Task > p {
+  font-family: sans-serif;
+  font-size: 0.9rem;
 }
 
 .Delete {
   cursor: pointer;
+}
+
+.Delete:hover {
+  color: #dc3545;
 }

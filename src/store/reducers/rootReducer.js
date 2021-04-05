@@ -178,7 +178,16 @@ const reducer = (state = initialState, action) => {
           toDoCards: [...state.copiedToDoCards],
         };
       }
-
+    case actionTypes.LOG_OUT: {
+      return {
+        ...state,
+        categoryDatas: [],
+        toDoCards: [],
+        copiedToDoCards: [],
+        checkedTasks: [],
+        isChecked: false,
+      };
+    }
     default:
       return state;
   }
