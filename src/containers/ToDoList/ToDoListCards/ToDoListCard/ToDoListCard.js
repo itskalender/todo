@@ -32,7 +32,7 @@ class toDoListCard extends Component {
             task={task}
             checkedTasks={this.props.checkedTasks}
             taskDeleted={this.props.taskDeleted}
-            taskCheckboxChanged={this.props.onTaskCheckboxChanged} // NOTE :
+            taskCheckboxChanged={this.props.onTaskCheckboxChanged} // NOTE
           />
         );
       });

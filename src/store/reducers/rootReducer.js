@@ -5,7 +5,8 @@ const initialState = {
   toDoCards: [],
   copiedToDoCards: [],
   checkedTasks: [],
-  isChecked: false,
+  isChecked: false, // for category
+  isTaskChecked: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -54,7 +55,7 @@ const reducer = (state = initialState, action) => {
       //
       const updatedCategoryDatas = [...state.categoryDatas];
       const categoryDataIndex = updatedCategoryDatas.findIndex(
-        categData => categData.id === action.cardId
+        categData => categData.cardId === action.cardId
       );
       updatedCategoryDatas.splice(categoryDataIndex, 1);
       return {
@@ -147,12 +148,34 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.TASK_CHECKBOX_CHANGED: {
+      const prevChecked = state.isTaskChecked;
+      const updatedIsTaskChecked = !prevChecked;
+
       const updatedCheckedTasks = [...state.checkedTasks];
       const data = { cardId: action.cardId, taskId: action.taskId };
-      updatedCheckedTasks.push(data);
+
+      const controlCheckTasks = updatedCheckedTasks.some(
+        taskData =>
+          taskData.cardId === action.cardId && taskData.taskId === action.taskId
+      );
+
+      if (!controlCheckTasks) {
+        updatedCheckedTasks.push(data);
+      }
+
+      if (controlCheckTasks) {
+        const dataIndex = updatedCheckedTasks.findIndex(
+          taskData =>
+            taskData.cardId === action.cardId &&
+            taskData.taskId === action.taskId
+        );
+        updatedCheckedTasks.splice(dataIndex, 1);
+      }
+
       return {
         ...state,
         checkedTasks: updatedCheckedTasks,
+        isTaskChecked: updatedIsTaskChecked,
       };
     }
 
@@ -160,7 +183,6 @@ const reducer = (state = initialState, action) => {
       const newChecked = !state.isChecked;
       if (newChecked) {
         const copiedToDoCards = [...state.toDoCards];
-        console.log('copiedToDoCards', copiedToDoCards);
         const correspondingCards = state.toDoCards.filter(
           card => card.category === action.category
         );
@@ -186,6 +208,7 @@ const reducer = (state = initialState, action) => {
         copiedToDoCards: [],
         checkedTasks: [],
         isChecked: false,
+        isTaskChecked: false,
       };
     }
     default:

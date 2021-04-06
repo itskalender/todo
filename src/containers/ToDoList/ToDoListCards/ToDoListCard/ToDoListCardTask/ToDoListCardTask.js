@@ -11,15 +11,11 @@ const toDoListCardTask = props => {
       <input
         type="checkbox"
         value={props.taskId}
-        // NOTE : YARIN BAK
-        // checked={
-        //   props.checkedTasks.some(checkedTask => {
-        //     checkedTask.cardId === props.cardId &&
-        //       checkedTask.taskId === props.taskId;
-        //   })
-        //     ? true
-        //     : null
-        // }
+        checked={props.checkedTasks.some(
+          checkedTask =>
+            checkedTask.cardId === props.cardId &&
+            checkedTask.taskId === props.taskId
+        )}
         onChange={() => props.taskCheckboxChanged(props.cardId, props.taskId)}
       />
       <p>{props.task}</p>

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import classes from './ToDoList.css';
 
 import ToDoListProfile from './ToDoListProfile/ToDoListProfile';
-import ToDoListCards from './ToDoListCards/ToDoListCards';
 import ToDoListCategories from './ToDoListCategories/ToDoListCategories';
+import ToDoListCards from './ToDoListCards/ToDoListCards';
 
 class ToDoList extends Component {
   render() {
